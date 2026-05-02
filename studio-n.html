@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio N – Alabang Nest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #005a80;
+    --sky: #8ec8ea;
+    --mist: #c9e6f5;
+    --cream: #f5f9fc;
+    --white: #ffffff;
+    --text: #1c3844;
+    --muted: #5a7a87;
+    --accent: #0078a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(0, 90, 128, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 42px;
+    width: 42px;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--mist);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HEADER ── */
+  .property-header {
+    background: var(--deep);
+    padding: 140px 5% 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .property-header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .property-header p {
+    font-size: 1.1rem;
+    color: var(--mist);
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── SECTION COMMON ── */
+  .property-details {
+    padding: 80px 5%;
+    background: var(--cream);
+  }
+
+  .details-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    gap: 60px;
+  }
+
+  .prop-section-title {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .prop-p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .amenity-card {
+    background: var(--white);
+    border: 1.5px solid rgba(142, 200, 234, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 90, 128, 0.03);
+    transition: transform 0.2s;
+  }
+
+  .amenity-card:hover { transform: translateY(-2px); }
+
+  .amenity-card h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .amenity-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── SIDEBAR FORM ── */
+  .contact-sidebar {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0, 90, 128, 0.05);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--mist);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--deep);
+    color: var(--white);
+    border: none;
+    border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 4px;
+  }
+
+  .form-submit:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #003550;
+    color: var(--mist);
+    padding: 40px 5%;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo img {
+    height: 36px;
+    opacity: 0.8;
+  }
+
+  .footer-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--sky);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(201, 230, 245, 0.5);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .details-inner { grid-template-columns: 1fr; gap: 40px; }
+    .amenities-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="alabang_nest 01.html" class="nav-logo">
+    <img src="egret-round.png" alt="Alabang Nest Logo">
+    <div class="nav-logo-text">
+      Alabang Nest
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="alabang_nest 01.html#about">About</a></li>
+    <li><a href="alabang_nest 01.html#projects">Properties</a></li>
+    <li><a href="alabang_nest 01.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="property-header">
+  <h1>Studio N</h1>
+  <p>Smart, connected living designed specifically for the modern urban professional.</p>
+</div>
+
+<section class="property-details">
+  <div class="details-inner">
+    <div>
+      <h2 class="prop-section-title">Smart Urban Living in Northgate</h2>
+      <p class="prop-p">Perfectly situated within Northgate Cyberzone—Alabang’s leading IT and BPO hub—Studio N offers highly functional living spaces designed for efficiency, comfort, and direct access to your professional goals. Developed with convenience in mind, it provides the ultimate answer to modern professionals seeking an integrated live-work-play lifestyle.</p>
+
+      <h3 class="prop-section-title" style="margin-top: 40px;">Community & Wellness Amenities</h3>
+      <p class="prop-p">Everything you need to recharge after a busy day is right within the development's perimeter.</p>
+      
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <h4>🏊 Swimming Pool</h4>
+          <p>Relax and unwind in a refreshing lap pool designed to clear your mind after work.</p>
+        </div>
+        <div class="amenity-card">
+          <h4>💪 Fitness Studio</h4>
+          <p>Well-equipped with essential cardio and strength-training equipment for dynamic routines.</p>
+        </div>
+        <div class="amenity-card">
+          <h4>🛋️ Function Rooms</h4>
+          <p>Perfectly arranged spaces for group discussions, collaborative work, or personal events.</p>
+        </div>
+        <div class="amenity-card">
+          <h4>🛡️ 24/7 Security</h4>
+          <p>Peace of mind with around-the-clock personnel, electronic access cards, and dedicated management.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-sidebar">
+      <h3 class="prop-section-title" style="font-size: 1.4rem; margin-bottom: 8px;">Inquire Details</h3>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 24px;">Submit your information below to learn more about unit availability, pricing options, and flexible terms at Studio N.</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Maria Santos">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="maria@email.com">
+      </div>
+      <div class="form-group">
+        <label>Unit Preference</label>
+        <input type="text" placeholder="Studio or 1-Bedroom">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Ask about downpayment schedules, proximity details, or unit viewing options..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Thank you! Jayjay will provide the latest details for Studio N soon. 🏡')">Send Inquiry</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="egret-round.png" alt="Alabang Nest Logo">
+      <span class="footer-logo-text">Alabang Nest</span>
+    </div>
+    <p class="footer-copy">© 2025 Alabang Nest · Jayjay Medina, Licensed Real Estate Broker · All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

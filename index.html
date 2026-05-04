@@ -491,11 +491,14 @@
 
   .proj-link:hover { gap: 10px; }
 
-  /* OVERLAY LINK EXTENSION: Spreads link across entire parent .proj-card area */
-  .proj-link::after {
-    content: "";
+  /* Clickable Card Trick: stretches the link to cover the entire card area */
+  .proj-card .proj-link::after {
+    content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 5;
   }
 
@@ -1017,7 +1020,7 @@
           <span class="proj-tag">Resort-Style</span>
           <span class="proj-tag">Filinvest City</span>
         </div>
-        <a href="#contact" class="proj-link">Inquire Now →</a>
+        <a href="the-levels.html" class="proj-link">Learn More →</a>
       </div>
     </div>
 
@@ -1032,7 +1035,7 @@
           <span class="proj-tag">Suburban Living</span>
           <span class="proj-tag">Cozy Spaces</span>
         </div>
-        <a href="#contact" class="proj-link">Inquire Now →</a>
+        <a href="studio-n.html" class="proj-link">Learn More →</a>
       </div>
     </div>
 
@@ -1047,7 +1050,7 @@
           <span class="proj-tag">High-Rise</span>
           <span class="proj-tag">City Views</span>
         </div>
-        <a href="#contact" class="proj-link">Inquire Now →</a>
+        <a href="1001-residences.html" class="proj-link">Learn More →</a>
       </div>
     </div>
 
@@ -1062,7 +1065,7 @@
           <span class="proj-tag">Luxury</span>
           <span class="proj-tag">Low-Density</span>
         </div>
-        <a href="#contact" class="proj-link">Inquire Now →</a>
+        <a href="botanika.html" class="proj-link">Learn More →</a>
       </div>
     </div>
 
@@ -1077,7 +1080,7 @@
           <span class="proj-tag">House & Lot</span>
           <span class="proj-tag">Suburban</span>
         </div>
-        <a href="#contact" class="proj-link">Inquire Now →</a>
+        <a href="brentville.html" class="proj-link">Learn More →</a>
       </div>
     </div>
   </div>
